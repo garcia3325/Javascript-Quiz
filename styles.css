@@ -1,0 +1,46 @@
+.openingMessage {
+ border: solid 2px #6A6A6A;
+ border-radius: 25px;
+ margin-top: 1%;
+ margin-bottom: 1%;
+ margin-left: 1%;
+ margin-right: 1%;
+}
+#scores {
+    align-items: left;
+    color: #D391EE;
+    font-size: small;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 3%;
+    padding-top: 0%;
+}
+
+#title {
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: bold;
+    text-align: center;
+    font-size: 43px;
+    padding-top: 2rem;
+    padding-bottom: 2%;
+}
+.instructions {
+   font-family: Arial, Helvetica, sans-serif;
+   font-size: 20px;
+    text-align: center;
+    margin-left: 23%;
+    margin-right: 25%;
+    padding-bottom: 2%;
+}
+
+.startbtn {
+    text-align: center;
+    color: white;
+    background-color: #351C74;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    margin-left: 45%;
+    margin-bottom: 30%;
+    padding: .8rem;
+    border-radius: 10px;
+    
+}
