@@ -1,8 +1,8 @@
-const question =  document.getElementById ("question");
-const choices = Array.from(document.getElementsByClassName ("choiceText"));
+const question = document.getElementById("question");
+const choices = Array.from(document.getElementsByClassName("choiceText"));
 
 let currentQuestion = {};
-let acceptingAnswers = true;
+let acceptingAnswers = false;
 let score = 0;
 let questionCounter = 0;
 let availableQuestions = [];
@@ -10,71 +10,94 @@ let availableQuestions = [];
 let questions = [
   {
     question: "JavaScript is a ___ side programming language?",
-    choices: ["client only", "server", "client and server", "none"],
+    choices1: "client only",
+    choices2: "server",
+    choices3: "client",
+    choices4: "server",
     answer: 2,
   },
   {
     question:
       "Which of the following will write the message “Hello DataFlair!” in an alert box?",
-    choices: [
-      "alertBox(“Hello DataFlair!”);",
-      "alert(Hello DataFlair!);",
-      "cmsgAlert(“Hello DataFlair!”);",
-      "alert(“Hello DataFlair!”);",
-    ],
+
+    choices1: "alertBox(“Hello DataFlair!”);",
+    choices2: "alert(Hello DataFlair!);",
+    choices3: "cmsgAlert(“Hello DataFlair!”);",
+    choices4: "alert(“Hello DataFlair!”);",
     answer: 3,
   },
   {
     question: "How do you find the minimum of x and y using JavaScript?",
-    choices: ["min(x,y);", "Math.min(x,y)", "Math.min(xy);", "min(xy)"],
+    choices1: "min(x,y);",
+    choices2: "Math.min(x,y)",
+    choices3: "Math.min(xy);",
+    choices4: "min(xy)",
     answer: 1,
   },
   {
-    question:
-      "Which of the following statements will throw an error? Please select 2 correct answers",
-    choices: [
-      "var fun = function bar( ){ }",
-      "Math.min(x,y)",
-      "function fun( ){ }",
-      "function( ){ }",
-    ],
-    answers: 1, //option 3 is wrong look up multiple select
-  },
-  {
-    question:
-      "If you type the following code in the console window, what result will you get? 3 > 2 > 1 === false;",
-    choices: ["True", "False"],
+    question: "A Function Associated With An object is Called:",
+    choices1: "Method",
+    choices2: "Link",
+    choices3: "Variable",
+    choices4: "None",
     answer: 1,
   },
   {
     question:
       "Which JavaScript label catches all the values, except for the ones specified?",
-    choices: ["catch", "label", "try", "Default"],
+    choices1: "catch",
+    choices2: "label",
+    choices3: "try",
+    choices4: "Default",
     answer: 3,
   },
   {
     question:
       "Which are the correct “if” statements to execute certain code if “x” is equal to 2?",
-    choices: ["if(x 2)", "if(x = 2)", "if(x == 2)", "if(x != 2 )"],
+    choices1: "if(x 2)",
+    choices2: "if(x = 2)",
+    choices3: "if(x == 2)",
+    choices4: "if(x != 2 )",
     answer: 2,
   },
-]; 
+];
 
 const CorrectScore = 10;
-const MaxQuestions = 5;
+const MaxQuestions = 4;
 
 startQuiz = () => {
   questionCounter = 0;
-  availableQuestions = [ ... questions];
-  console.log(availableQuestions);
-  getNewQuestions ();
+  availableQuestions = [...questions];
+  getNewQuestions();
 };
 
 getNewQuestions = () => {
+  if (availableQuestions.length === 0 || questionCounter >= MaxQuestions) {
+    return window.location.assign("index.html");
+  }
+
   questionCounter++;
   const questionIndex = Math.floor(Math.random() * availableQuestions.length);
   currentQuestion = availableQuestions[questionIndex];
   question.innerText = currentQuestion.question;
+
+  choices.forEach((choices) => {
+    const number = choices.dataset["number"];
+    choices.innerText = currentQuestion["choices" + number];
+  });
+
+  availableQuestions.splice(questionIndex, 1);
+
+  acceptingAnswers = true;
 };
 
+choices.forEach((choices) => {
+  choices.addEventListener("click", (e) => {
+    if (!acceptingAnswers) return;
+    acceptingAnswers = false;
+    const selectedChoice = e.target;
+    const selectedAnswer = selectedChoice.dataset["number"];
+    getNewQuestions();
+  });
+});
 startQuiz();
