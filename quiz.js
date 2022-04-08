@@ -63,7 +63,7 @@ let questions = [
 ];
 
 const CorrectScore = 10;
-const MaxQuestions = 4;
+const MaxQuestions = 5;
 
 startQuiz = () => {
   questionCounter = 0;
@@ -108,5 +108,18 @@ choices.forEach((choices) => {
   });
 });
 
-startQuiz();
+const startingMinutes = 75;
+let time = startingMinutes*60;
 
+const timerEl = document.getElementById('timer');
+
+setInterval (updateTimer, 1000);
+  
+function updateTimer () {
+  const minutes = Math.floor(time/60);
+  let seconds = time % 60;
+
+  timerEl.innerHTML = `${minutes}: ${seconds}`;
+  time--;
+}
+startQuiz();
