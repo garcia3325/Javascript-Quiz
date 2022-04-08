@@ -97,11 +97,26 @@ choices.forEach((choices) => {
     acceptingAnswers = false;
     const selectedChoice = e.target;
     const selectedAnswer = selectedChoice.dataset["number"];
-    
+    const feedback = document.getElementById ("feedback")
     const classToApply = selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
-    console.log (classToApply);
-    /*add incorrect or correct feedback*/
-    
+    console.log (classToApply+"here");
+    if (classToApply == "correct") {
+      let div = document.createElement("div")
+      let p = document.createElement("h2")
+      div.append("Correct!", p)
+     feedback.append(div)
+      console.log("correct answer");
+    } else {
+      time = time-600
+      let div = document.createElement("div")
+    let p = document.createElement("p")
+    div.append("Wrong!", p)
+   feedback.append(div)
+
+
+console.log(div.childNodes) // NodeList [ #text "Some text", <p> ]
+    }
+
      setTimeout (() =>{
        getNewQuestions();
     }, 1000);
@@ -123,3 +138,4 @@ function updateTimer () {
   time--;
 }
 startQuiz();
+
