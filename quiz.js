@@ -11,10 +11,10 @@ let questions = [
   {
     question: "JavaScript is a ___ side programming language?",
     choices1: "client only",
-    choices2: "server",
-    choices3: "client",
-    choices4: "server",
-    answer: 2,
+    choices2: "server only",
+    choices3: "both",
+    choices4: "none",
+    answer: 3,
   },
   {
     question:
@@ -58,7 +58,7 @@ let questions = [
     choices2: "if(x = 2)",
     choices3: "if(x == 2)",
     choices4: "if(x != 2 )",
-    answer: 2,
+    answer: 3,
   },
 ];
 
@@ -73,7 +73,7 @@ startQuiz = () => {
 
 getNewQuestions = () => {
   if (availableQuestions.length === 0 || questionCounter >= MaxQuestions) {
-    return window.location.assign("index.html");
+    return window.location.assign("end.html");
   }
 
   questionCounter++;
@@ -97,7 +97,16 @@ choices.forEach((choices) => {
     acceptingAnswers = false;
     const selectedChoice = e.target;
     const selectedAnswer = selectedChoice.dataset["number"];
-    getNewQuestions();
+    
+    const classToApply = selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
+    console.log (classToApply);
+    /*add incorrect or correct feedback*/
+    
+     setTimeout (() =>{
+       getNewQuestions();
+    }, 1000);
   });
 });
+
 startQuiz();
+

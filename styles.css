@@ -64,3 +64,62 @@
     width: 10rem;
     height: 10rem;
 }
+
+#titleEndPage {
+    display: flex;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: bold;
+    text-align: center;
+    font-size: 30px;
+   -ms-flex-align: center;
+   margin-top: 4rem;
+   margin-bottom: 10%;
+   margin-left: 5%;
+   width: 100%;
+}
+
+#yourScore {
+    display: flex;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: bold;
+    text-align: center;
+    font-size: 30px;
+   -ms-flex-align: center;
+   margin-top: 4rem;
+   margin-bottom: 10%;
+   margin-left: 5%;
+   width: 100%;  
+}
+
+#form {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding: auto;
+    border-radius: 10px;
+}
+
+input {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    width: 60%;
+    height:30%;
+    border-radius: 10px;
+    border-color: #351C74;
+    margin-bottom: 5%;
+}
+
+#endbtn {
+    margin-left: 5%;
+    color: white;
+    background-color: #351C74;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    border-radius: 10px;
+}
