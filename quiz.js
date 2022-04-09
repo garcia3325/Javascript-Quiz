@@ -6,7 +6,7 @@ let acceptingAnswers = false;
 let score = 0;
 let questionCounter = 0;
 let availableQuestions = [];
-
+const timerEl = document.getElementById("timer");
 let questions = [
   {
     question: "JavaScript is a ___ side programming language?",
@@ -97,45 +97,39 @@ choices.forEach((choices) => {
     acceptingAnswers = false;
     const selectedChoice = e.target;
     const selectedAnswer = selectedChoice.dataset["number"];
-    const feedback = document.getElementById ("feedback")
-    const classToApply = selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
-    console.log (classToApply+"here");
+    const feedback = document.getElementById("feedback");
+    const classToApply =
+      selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
+    console.log(classToApply + "here");
     if (classToApply == "correct") {
-      let div = document.createElement("div")
-      let p = document.createElement("h2")
-      div.append("Correct!", p)
-     feedback.append(div)
+      let div = document.createElement("div");
+      let p = document.createElement("h2");
+      div.append("Correct!", p);
+      feedback.append(div);
       console.log("correct answer");
     } else {
-      time = time-600
-      let div = document.createElement("div")
-    let p = document.createElement("p")
-    div.append("Wrong!", p)
-   feedback.append(div)
+      time = time - 15;
+      let div = document.createElement("div");
+      let p = document.createElement("p");
+      div.append("Wrong!", p);
+      feedback.append(div);
 
-
-console.log(div.childNodes) // NodeList [ #text "Some text", <p> ]
+      console.log(div.childNodes); // NodeList [ #text "Some text", <p> ]
     }
 
-     setTimeout (() =>{
-       getNewQuestions();
+    setTimeout(() => {
+      getNewQuestions();
     }, 1000);
   });
 });
 
-const startingMinutes = 75;
-let time = startingMinutes*60;
-
-const timerEl = document.getElementById('timer');
-
-setInterval (updateTimer, 1000);
-  
-function updateTimer () {
-  const minutes = Math.floor(time/60);
-  let seconds = time % 60;
-
-  timerEl.innerHTML = `${minutes}: ${seconds}`;
+let time = 75;
+function updateTimer() {
+  timerEl.innerHTML = time;
   time--;
+  if (time < 0) clearInterval(updateTimer);
 }
-startQuiz();
 
+setInterval(updateTimer, 1000);
+
+startQuiz();

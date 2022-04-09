@@ -18,13 +18,15 @@
                 <input type="text" name="name" id="name" placeholder="Your Name" />
             </form>
             <br>
-            <p class="usernameAndScore"> usernameAndScore</p>
-            <br>
-            <button id="endbtn" type="submit">Save</button>
-        </div>
+            <button id="endbtn" type="submit" onclick="store()">Save</button>
     </body>
 
-    <script src="./end.js"></script>
-    </body>
 
-</html>
+    <script type="text/javascript">
+        function store() {
+            var inputName = document.getElementById("name");
+            localStorage.setItem("name", inputName.value);
+            var storedValue = localStorage.getItem("name");
+        }
+    </script>
+</html >
